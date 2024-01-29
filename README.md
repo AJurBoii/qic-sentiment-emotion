@@ -22,3 +22,9 @@ https://doi.org/10.1111/j.1467-8640.2012.00460.x
 #### Limitations ####
 - Doesn't handle negations very well ("not good," "not bad," etc.)
 - Can't categorize words outside of the defined lexicon (key-based analysis)
+
+## To-Do ##
+- Test for large inputs
+  - Transcripts tend to be longer than articles
+- Graph results
+- Draft questions for larger group analysis based on graph visualizations
