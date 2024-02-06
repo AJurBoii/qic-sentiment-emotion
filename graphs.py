@@ -26,7 +26,7 @@ colors = plt.get_cmap('Blues')(np.linspace(0.2, 0.7, len(x)))
 
 # plot
 fig, ax = plt.subplots()
-ax.pie(x, labels=article_affect_labels, textprops={'size': 'smaller'})
-ax.set_title('Article Affect Frequencies')
+ax.pie(y, labels=quote_affect_labels, textprops={'size': 'smaller'}, autopct='%.2f')
+ax.set_title('Quote Affect Frequencies')
 
-plt.savefig('article_affect.png')
+plt.savefig('quote_affect.png')
