@@ -1,1 +1,0 @@
-{'anticipation': 319301, 'joy': 233426, 'positive': 506570, 'trust': 318995, 'negative': 169746, 'sadness': 88757, 'fear': 111859, 'anger': 96975, 'surprise': 123269, 'disgust': 47497}
