@@ -24,7 +24,8 @@ https://doi.org/10.1111/j.1467-8640.2012.00460.x
 - Can't categorize words outside of the defined lexicon (key-based analysis)
 
 ## To-Do ##
-- Test for large inputs
-  - Transcripts tend to be longer than articles
+- ~~Test for large inputs~~
+  - ~~Transcripts tend to be longer than articles~~
+- Aggregate data
 - Graph results
 - Draft questions for larger group analysis based on graph visualizations
