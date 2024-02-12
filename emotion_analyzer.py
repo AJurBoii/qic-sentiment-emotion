@@ -9,14 +9,12 @@ Doing so will ensure that the MissingCorpusError won't occur while running.
 
 from nrclex import NRCLex
 import json
+import os
 import csv
 import sys
 
-# need to increase max field size for csv files. some fields are very big!!!
-# if you don't increase the field size limit, python won't be able to read transcripts.csv
+# Prevents csv.Error: field larger than field limit.
 maxInt = sys.maxsize
-
-# while loop will decrease maxInt until no OverflowError occurs; we can avoid getting the error when trying to set csv field size to the largest possible int
 while True:
     try:
         csv.field_size_limit(maxInt)
@@ -39,46 +37,27 @@ def json_analyzer(json_file):
 
 # csv input
 def csv_analyzer(csv_file):
-    text = ""
-    with open(csv_file, 'r') as file:
-        data = csv.reader(file)
-        count = 0
-        for line in data:
-            text += str(line) + ' '
-            count += 1
-            print(count, end='\r')
-    return NRCLex(text)
+    file_name = os.path.basename(csv_file)
+    file_name = os.path.splitext(file_name)[0]
 
-# articles_object = csv_analyzer('data/articles.csv')
+    with open(csv_file) as file:
+        reader = csv.reader(file)
+        aff_freq = open(f'outputs/{file_name}_AFFECT_FREQUENCIES.txt', 'a')
+        raw_scores = open(f'outputs/{file_name}_RAW_SCORES.txt', 'a')
+        top_emote = open(f'outputs/{file_name}_TOP_EMOTIONS.txt', 'a')
 
-# # affect frequencies
-# frequencies = open('outputs/articles_AFFECT_FREQUENCIES.txt', 'w')
-# frequencies.write(str(articles_object.affect_frequencies))
-# frequencies.close()
+        for row in reader:
+            text_object = NRCLex(str(row[0]))
 
-# # raw emotion scores
-# raw_scores = open('outputs/articles_RAW_SCORES.txt', 'w')
-# raw_scores.write(str(articles_object.raw_emotion_scores))
-# raw_scores.close()
+            aff_freq.write(str(text_object.affect_frequencies) + '\n')
+            raw_scores.write(str(text_object.raw_emotion_scores) + '\n')
+            top_emote.write(str(text_object.top_emotions) + '\n')
 
-# # top emotions
-# top_scores = open('outputs/articles_TOP_EMOTIONS.txt', 'w')
-# top_scores.write(str(articles_object.top_emotions))
-# top_scores.close()
+        aff_freq.close()
+        raw_scores.close()
+        top_emote.close()
 
-transcripts_object = csv_analyzer('data/transcripts.csv')
 
-# affect frequencies
-frequencies = open('outputs/transcripts_AFFECT_FREQUENCIES.txt', 'w')
-frequencies.write(str(transcripts_object.affect_frequencies))
-frequencies.close()
-
-# raw emotion scores
-raw_scores = open('outputs/transcripts_RAW_SCORES.txt', 'w')
-raw_scores.write(str(transcripts_object.raw_emotion_scores))
-raw_scores.close()
-
-# top emotions
-top_scores = open('outputs/transcripts_TOP_EMOTIONS.txt', 'w')
-top_scores.write(str(transcripts_object.top_emotions))
-top_scores.close()
+# csv_analyzer('data/articles.csv')
+# csv_analyzer('data/quotes_by_article.csv')
+csv_analyzer('data/transcripts.csv')
