@@ -1,0 +1,4 @@
+Aggregated raw counts:
+{'anticipation': 2110290, 'joy': 1343603, 'positive': 3487349, 'fear': 984348, 'trust': 2247467, 'negative': 1568764, 'sadness': 833571, 'disgust': 395175, 'surprise': 729975, 'anger': 883707}
+Aggregated frequencies:
+{'anticipation': 0.14469651471255052, 'joy': 0.09212699262060048, 'positive': 0.23911748901160423, 'fear': 0.067493910725194, 'trust': 0.1541023469909215, 'negative': 0.10756563467889228, 'sadness': 0.05715556556940299, 'disgust': 0.027096012965768756, 'surprise': 0.05005228585990269, 'anger': 0.06059324686516255}
