@@ -36,7 +36,7 @@ def json_analyzer(json_file):
     return NRCLex(text)
 
 # csv input
-def csv_analyzer(csv_file):
+def csv_analyzer_basic(csv_file):
     file_name = os.path.basename(csv_file)
     file_name = os.path.splitext(file_name)[0]
 
@@ -57,7 +57,47 @@ def csv_analyzer(csv_file):
         raw_scores.close()
         top_emote.close()
 
+def csv_analyzer(csv_file, column_name):
+    file_name = os.path.basename(csv_file)
+    file_name = os.path.splitext(file_name)[0]
 
-# csv_analyzer('data/articles.csv')
-# csv_analyzer('data/quotes_by_article.csv')
-csv_analyzer('data/transcripts.csv')
+    with open(csv_file, encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        aff_freq = open(f'outputs/{file_name}_AFFECT_FREQUENCIES.txt', 'a')
+        raw_scores = open(f'outputs/{file_name}_RAW_SCORES.txt', 'a')
+        top_emote = open(f'outputs/{file_name}_TOP_EMOTIONS.txt', 'a')
+
+        for row in reader:
+            text_object = NRCLex(str(row[column_name]))
+
+            aff_freq.write(str(text_object.affect_frequencies) + '\n')
+            raw_scores.write(str(text_object.raw_emotion_scores) + '\n')
+            top_emote.write(str(text_object.top_emotions) + '\n')
+
+        aff_freq.close()
+        raw_scores.close()
+        top_emote.close()
+
+while True:
+    response = input('\nAnalyze csv? (y/n): ')
+    if (response == 'y'):
+        csv_file = input('\nEnter csv file (include local path):\n')
+        specify_row = input('\nSpecify row? (y/n): ')
+        if (specify_row == 'y'):
+            row_name = input('\nEnter row name (case sensitive):\n')
+            csv_analyzer(csv_file, row_name)
+        else:
+            csv_analyzer_basic(csv_file)
+        print('\n\nSuccess!\n')
+    else:
+        break
+        
+# ''' TEST '''
+# with open('data/News3.csv', encoding='utf-8') as file:
+#     reader = csv.DictReader(file)
+#     for row in reader:
+#         if (int(row['']) <= 5):
+#             print(row['Body'] + '\n')
+#         else:
+#             break
+        

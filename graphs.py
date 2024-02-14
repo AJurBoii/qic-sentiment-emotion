@@ -57,7 +57,6 @@ def pie_chart(aggregate_file, chart_name):
         for i in range(3):
             next(file)
         frequencies = eval(next(file))
-        print(frequencies)
         chart_labels = []
         data = []
         for key in label_order:
@@ -71,3 +70,18 @@ def pie_chart(aggregate_file, chart_name):
 pie_chart('outputs/aggregated data/articles.AGGREGATE.txt', 'Articles')
 pie_chart('outputs/aggregated data/quotes.AGGREGATE.txt', 'Quotes')
 pie_chart('outputs/aggregated data/transcripts.AGGREGATE.txt', 'Transcripts')
+
+while True:
+    response = input('\n\nAggregate file? (y/n): ')
+    if (response == 'y'):
+        filename = input('\n\nEnter file name (include local path):\n')
+        output_name = input('\nEnter name for output file (e.g. [output_name].AGGREGATE.txt):\n')
+        aggregate(filename, output_name)
+        print(f'Success: created {output_name}.AGGREGATE.txt')
+    response = input('\n\nGenerate pie chart? (y/n): ')
+    if (response == 'y'):
+        aggregate_file = input('\n\nEnter aggregate file name (include path):\n')
+        chart_name = input('\n\nInput chart name:\n')
+        pie_chart(aggregate_file, chart_name)
+    else:
+        break
