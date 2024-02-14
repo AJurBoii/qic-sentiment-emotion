@@ -23,6 +23,23 @@ https://doi.org/10.1111/j.1467-8640.2012.00460.x
 - Doesn't handle negations very well ("not good," "not bad," etc.)
 - Can't categorize words outside of the defined lexicon (key-based analysis)
 
+## Data Collection ##
+Data pertaining to sports media is categorized into two main corpora: articles and transcripts. (Quotes do not count as a separate corpus for the sake of data collection, as quotes are a subset of articles). Additionally, as a third corpus, we've collected data on standard news articles to act as a control group for emotion analysis. The source and collection method for each corpus is as follows:
+#### Sports Articles ####
+Perigon API
+- Paid service that provides text data about various articles, blogposts, and other written media.
+- API queries can be based on topic, source, authors, year published, etc.
+  - We filtered our queries based on college sports from any source
+ #### Sports Transcripts ####
+ ASAP Sports
+ - Website that hosts a sizeable collection of transcripts of post-game interviews, press conferences, etc. for a variety of college sports
+ - We scraped the transcripts in the corpus through the use of a custom-made webpage crawler/scraper.
+#### Standard News (Control Group) ####
+"4000 CNN articles from 2023", by Pedro Araujo Ribeiro, Kaggle.com
+[https://www.kaggle.com/datasets/pedroaribe/4000-cnn-articles-as-of-1062023/data]
+- Dataset containing around 4,000 CNN articles
+- A csv file where each row contains title, abstract, body text, keywords, and theme for a single article
+
 ## To-Do ##
 - ~~Test for large inputs~~
   - ~~Transcripts tend to be longer than articles~~
