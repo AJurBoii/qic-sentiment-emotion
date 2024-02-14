@@ -45,6 +45,6 @@ Perigon API
   - ~~Transcripts tend to be longer than articles~~
 - ~~Aggregate data~~
 - ~~Graph results~~
-- Find data for control group
-  - Standard news articles, blogposts, etc.
+- ~~Find data for control group~~
+  - ~~Standard news articles, blogposts, etc.~~
 - Draft questions for larger group analysis based on graph visualizations
