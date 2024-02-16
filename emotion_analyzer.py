@@ -22,18 +22,18 @@ while True:
     except OverflowError:
         maxInt = int(maxInt/10)
 
-# input: string, name of json corpus file
-def json_analyzer(json_file):
-    text = ""
-    with open(json_file, 'r') as file:
-        data = json.load(file)
-        total = len(data)
-        current = 1
-        for article in data:
-            text += str(article['content'] + ' ')
-            print(str(current) + "/" + str(total), end='\r')
-            current += 1
-    return NRCLex(text)
+# # input: string, name of json corpus file
+# def json_analyzer(json_file):
+#     text = ""
+#     with open(json_file, 'r') as file:
+#         data = json.load(file)
+#         total = len(data)
+#         current = 1
+#         for article in data:
+#             text += str(article['content'] + ' ')
+#             print(str(current) + "/" + str(total), end='\r')
+#             current += 1
+#     return NRCLex(text)
 
 # csv input
 def csv_analyzer_basic(csv_file):
