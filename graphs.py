@@ -40,14 +40,6 @@ def aggregate(text_file, output_name):
         file.write('\nAggregated frequencies:\n')
         file.write(str(aggregated_frequencies))
 
-# if (not os.path.isfile('outputs/aggregated data/articles.AGGREGATE.txt')):
-#     aggregate('outputs/articles_RAW_SCORES.txt', 'articles')
-# if (not os.path.isfile('outputs/aggregated data/quotes.AGGREGATE.txt')):
-#     aggregate('outputs/quotes_by_article_RAW_SCORES.txt', 'quotes')
-# if (not os.path.isfile('outputs/aggregated data/transcripts.AGGREGATE.txt')):
-#     aggregate('outputs/transcripts_RAW_SCORES.txt', 'transcripts')
-
-
 '''
 Input: text file of aggregated emotion vectors
 Output: png of matplotlib pie chart
@@ -68,25 +60,10 @@ def pie_chart(aggregate_file, chart_name):
         ax.set_title(f'{chart_name} Affect Frequencies')
         plt.savefig(f'outputs/charts/{chart_name.lower()}_affect.png')
 
-# pie_chart('outputs/aggregated data/articles.AGGREGATE.txt', 'Articles')
-# pie_chart('outputs/aggregated data/quotes.AGGREGATE.txt', 'Quotes')
-# pie_chart('outputs/aggregated data/transcripts.AGGREGATE.txt', 'Transcripts')
-
-# while True:
-#     response = input('\n\nAggregate file? (y/n): ')
-#     if (response == 'y'):
-#         filename = input('\n\nEnter file name (include local path):\n')
-#         output_name = input('\nEnter name for output file (e.g. [output_name].AGGREGATE.txt):\n')
-#         aggregate(filename, output_name)
-#         print(f'Success: created {output_name}.AGGREGATE.txt')
-#     response = input('\n\nGenerate pie chart? (y/n): ')
-#     if (response == 'y'):
-#         aggregate_file = input('\n\nEnter aggregate file name (include path):\n')
-#         chart_name = input('\n\nInput chart name:\n')
-#         pie_chart(aggregate_file, chart_name)
-#     else:
-#         break
-        
+''' Taking in command line arguments:
+    FORMAT:
+        python graphs.py [a/aggregate/g/graph] [file_name] [label for generated file/chart]
+'''        
 
 num_args = len(sys.argv)
 if num_args < 4:
