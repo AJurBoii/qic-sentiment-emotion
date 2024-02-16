@@ -1,4 +1,4 @@
 Aggregated raw counts:
-{'anger': 54834, 'fear': 87583, 'negative': 124570, 'positive': 169550, 'trust': 111633, 'anticipation': 75150, 'joy': 44899, 'surprise': 31679, 'sadness': 55635, 'disgust': 27760}
+{'anger': 118346, 'fear': 187348, 'negative': 267205, 'positive': 364550, 'trust': 240042, 'anticipation': 161525, 'joy': 96955, 'surprise': 68102, 'sadness': 119354, 'disgust': 59664}
 Aggregated frequencies:
-{'anger': 0.07000445554856229, 'fear': 0.111813842329754, 'negative': 0.1590337204596492, 'positive': 0.21645795379251442, 'trust': 0.14251755090368481, 'anticipation': 0.09594111015928905, 'joy': 0.057320823753052814, 'surprise': 0.040443358998484606, 'sadness': 0.07102706139337388, 'disgust': 0.03544012266163492}
+{'anger': 0.07031467698419158, 'fear': 0.11131186608448385, 'negative': 0.15875849850067525, 'positive': 0.21659553761501904, 'trust': 0.14261973951497572, 'anticipation': 0.09596926131742134, 'joy': 0.05760532258802406, 'surprise': 0.04046245865493904, 'sadness': 0.07091357508298719, 'disgust': 0.03544906365728294}

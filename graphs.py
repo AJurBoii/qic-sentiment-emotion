@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import sys
 
 # Determines the order in which data is plotted on the pie charts;
 # Ensures that the chart for each corpus uses the same colors for the same emotions
@@ -12,7 +13,7 @@ counts of that emotion
     i.e. articles_RAW_SCORES.txt
 
 Output: text file:
-    output_name_AGGREGATE.txt - two dictionaries, aggregate raw counts and aggregate 
+    [output_name].AGGREGATE.txt - two dictionaries, aggregate raw counts and aggregate 
     frequencies
 '''
 def aggregate(text_file, output_name):
@@ -39,12 +40,12 @@ def aggregate(text_file, output_name):
         file.write('\nAggregated frequencies:\n')
         file.write(str(aggregated_frequencies))
 
-if (not os.path.isfile('outputs/aggregated data/articles.AGGREGATE.txt')):
-    aggregate('outputs/articles_RAW_SCORES.txt', 'articles')
-if (not os.path.isfile('outputs/aggregated data/quotes.AGGREGATE.txt')):
-    aggregate('outputs/quotes_by_article_RAW_SCORES.txt', 'quotes')
-if (not os.path.isfile('outputs/aggregated data/transcripts.AGGREGATE.txt')):
-    aggregate('outputs/transcripts_RAW_SCORES.txt', 'transcripts')
+# if (not os.path.isfile('outputs/aggregated data/articles.AGGREGATE.txt')):
+#     aggregate('outputs/articles_RAW_SCORES.txt', 'articles')
+# if (not os.path.isfile('outputs/aggregated data/quotes.AGGREGATE.txt')):
+#     aggregate('outputs/quotes_by_article_RAW_SCORES.txt', 'quotes')
+# if (not os.path.isfile('outputs/aggregated data/transcripts.AGGREGATE.txt')):
+#     aggregate('outputs/transcripts_RAW_SCORES.txt', 'transcripts')
 
 
 '''
@@ -67,21 +68,35 @@ def pie_chart(aggregate_file, chart_name):
         ax.set_title(f'{chart_name} Affect Frequencies')
         plt.savefig(f'outputs/charts/{chart_name.lower()}_affect.png')
 
-pie_chart('outputs/aggregated data/articles.AGGREGATE.txt', 'Articles')
-pie_chart('outputs/aggregated data/quotes.AGGREGATE.txt', 'Quotes')
-pie_chart('outputs/aggregated data/transcripts.AGGREGATE.txt', 'Transcripts')
+# pie_chart('outputs/aggregated data/articles.AGGREGATE.txt', 'Articles')
+# pie_chart('outputs/aggregated data/quotes.AGGREGATE.txt', 'Quotes')
+# pie_chart('outputs/aggregated data/transcripts.AGGREGATE.txt', 'Transcripts')
 
-while True:
-    response = input('\n\nAggregate file? (y/n): ')
-    if (response == 'y'):
-        filename = input('\n\nEnter file name (include local path):\n')
-        output_name = input('\nEnter name for output file (e.g. [output_name].AGGREGATE.txt):\n')
-        aggregate(filename, output_name)
-        print(f'Success: created {output_name}.AGGREGATE.txt')
-    response = input('\n\nGenerate pie chart? (y/n): ')
-    if (response == 'y'):
-        aggregate_file = input('\n\nEnter aggregate file name (include path):\n')
-        chart_name = input('\n\nInput chart name:\n')
-        pie_chart(aggregate_file, chart_name)
-    else:
-        break
+# while True:
+#     response = input('\n\nAggregate file? (y/n): ')
+#     if (response == 'y'):
+#         filename = input('\n\nEnter file name (include local path):\n')
+#         output_name = input('\nEnter name for output file (e.g. [output_name].AGGREGATE.txt):\n')
+#         aggregate(filename, output_name)
+#         print(f'Success: created {output_name}.AGGREGATE.txt')
+#     response = input('\n\nGenerate pie chart? (y/n): ')
+#     if (response == 'y'):
+#         aggregate_file = input('\n\nEnter aggregate file name (include path):\n')
+#         chart_name = input('\n\nInput chart name:\n')
+#         pie_chart(aggregate_file, chart_name)
+#     else:
+#         break
+        
+
+num_args = len(sys.argv)
+if num_args < 4:
+    print(f'3 arguments required. Only {num_args-1} provided.')
+else:
+    file_name = sys.argv[2]
+    label = sys.argv[3]
+    if str(sys.argv[1]) == 'aggregate' or str(sys.argv[1]) == 'a':
+        aggregate(file_name, label)
+        print("\nFile aggregated successfully")
+    elif sys.argv[1] == 'graph' or sys.argv[1] == 'g':
+        pie_chart(file_name, label)
+        print("\nFile charted successfully")
