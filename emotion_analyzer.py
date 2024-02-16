@@ -78,26 +78,9 @@ def csv_analyzer(csv_file, column_name):
         raw_scores.close()
         top_emote.close()
 
-while True:
-    response = input('\nAnalyze csv? (y/n): ')
-    if (response == 'y'):
-        csv_file = input('\nEnter csv file (include local path):\n')
-        specify_row = input('\nSpecify row? (y/n): ')
-        if (specify_row == 'y'):
-            row_name = input('\nEnter row name (case sensitive):\n')
-            csv_analyzer(csv_file, row_name)
-        else:
-            csv_analyzer_basic(csv_file)
-        print('\n\nSuccess!\n')
-    else:
-        break
-        
-# ''' TEST '''
-# with open('data/News3.csv', encoding='utf-8') as file:
-#     reader = csv.DictReader(file)
-#     for row in reader:
-#         if (int(row['']) <= 5):
-#             print(row['Body'] + '\n')
-#         else:
-#             break
-        
+csv_file = sys.argv[1]
+if (len(sys.argv)) == 3:
+    row_name = sys.argv[2]
+    csv_analyzer(csv_file, row_name)
+else:
+    csv_analyzer_basic(csv_file)
