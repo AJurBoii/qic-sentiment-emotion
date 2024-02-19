@@ -1,0 +1,6 @@
+Average distribution differences between corpora:
+Articles vs. Transcripts: 0.01045739448817155
+Articles vs. Quotes: 0.012104387905968638
+Articles vs. Control: 0.025368661901040045
+Transcripts vs. Quotes: 0.0051444235022617855
+Transcripts vs. Control: 0.03418708304526495
