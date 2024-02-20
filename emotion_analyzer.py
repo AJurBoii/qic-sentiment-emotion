@@ -40,7 +40,7 @@ def csv_analyzer_basic(csv_file):
     file_name = os.path.basename(csv_file)
     file_name = os.path.splitext(file_name)[0]
 
-    with open(csv_file) as file:
+    with open(csv_file, encoding='utf-8') as file:
         reader = csv.reader(file)
         aff_freq = open(f'outputs/{file_name}_AFFECT_FREQUENCIES.txt', 'a')
         raw_scores = open(f'outputs/{file_name}_RAW_SCORES.txt', 'a')
@@ -52,10 +52,16 @@ def csv_analyzer_basic(csv_file):
             aff_freq.write(str(text_object.affect_frequencies) + '\n')
             raw_scores.write(str(text_object.raw_emotion_scores) + '\n')
             top_emote.write(str(text_object.top_emotions) + '\n')
+        # affect_list = open(f'outputs/{file_name}_AFFECT_DICT.txt', 'w')
+        # next(reader)
+        # text_object = NRCLex(next(reader)[3])
+        # affect_list.write(str(text_object.affect_dict))
+        # affect_list.close()
 
         aff_freq.close()
         raw_scores.close()
         top_emote.close()
+
 
 def csv_analyzer(csv_file, column_name):
     file_name = os.path.basename(csv_file)
