@@ -40,31 +40,10 @@ def aggregate(text_file, output_name):
         file.write('\nAggregated frequencies:\n')
         file.write(str(aggregated_frequencies))
 
-'''
-Input: text file of aggregated emotion vectors
-Output: png of matplotlib pie chart
-'''
-def pie_chart(aggregate_file, chart_name):
-    if (not os.path.isfile(f'outputs/charts/{chart_name.lower()}_affect.png')):
-        file = open(aggregate_file, 'r')
-        for i in range(3):
-            next(file)
-        frequencies = eval(next(file))
-        chart_labels = []
-        data = []
-        for key in label_order:
-            chart_labels.append(key)
-            data.append(frequencies[key])
-        fig, ax = plt.subplots()
-        ax.pie(data, labels=chart_labels, textprops={'size': 'smaller'}, autopct='%.2f')
-        ax.set_title(f'{chart_name} Affect Frequencies')
-        plt.savefig(f'outputs/charts/{chart_name.lower()}_affect.png')
-
 ''' Taking in command line arguments:
     FORMAT:
         python graphs.py [a/aggregate/g/graph] [file_name] [label for generated file/chart]
 '''        
-
 num_args = len(sys.argv)
 if num_args < 4:
     print(f'3 arguments required. Only {num_args-1} provided.')
