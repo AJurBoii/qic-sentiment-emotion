@@ -35,7 +35,7 @@ while True:
 #             current += 1
 #     return NRCLex(text)
 
-# csv input
+# csv input, used to run analysis on articles.csv, transcripts.csv, quotes.csv
 def csv_analyzer_basic(csv_file):
     file_name = os.path.basename(csv_file)
     file_name = os.path.splitext(file_name)[0]
@@ -63,6 +63,7 @@ def csv_analyzer_basic(csv_file):
         top_emote.close()
 
 
+# This method was used to run NRCLex on News3.csv
 def csv_analyzer(csv_file, column_name):
     file_name = os.path.basename(csv_file)
     file_name = os.path.splitext(file_name)[0]
