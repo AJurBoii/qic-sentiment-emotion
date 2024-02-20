@@ -53,6 +53,3 @@ else:
     if str(sys.argv[1]) == 'aggregate' or str(sys.argv[1]) == 'a':
         aggregate(file_name, label)
         print("\nFile aggregated successfully")
-    elif sys.argv[1] == 'graph' or sys.argv[1] == 'g':
-        pie_chart(file_name, label)
-        print("\nFile charted successfully")
