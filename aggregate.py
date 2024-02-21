@@ -110,6 +110,17 @@ def top_bottom_five(file_name):
 
         outfile.close()
 
+def average_matched_difference(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        sum = 0
+        num_rows = 0
+
+        reader = csv.DictReader(file)
+        for row in reader:
+            sum += float(row['average_difference'])
+            num_rows += 1
+    return sum/num_rows
+
 
 
 ''' Taking in command line arguments:
@@ -119,7 +130,9 @@ def top_bottom_five(file_name):
 num_args = len(sys.argv)
 if num_args < 3:
     # matched_analysis('data/raw_matched_art_trans.csv')
-    top_bottom_five('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')
+    # top_bottom_five('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')
+    with open('outputs/matched articles transcripts/average_difference.AGGREGATE.txt', 'w') as file:
+        file.write(str(average_matched_difference('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')))
 else:
     file_name = sys.argv[1]
     label = sys.argv[2]
