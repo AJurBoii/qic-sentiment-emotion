@@ -115,7 +115,7 @@ def four_corpora_chart():
     plt.title('Emotion distribution by corpus')
     plt.xticks(x+width+(width/2), emotions)
     plt.legend(loc='upper left')
-    plt.ylim(0, 1)
+    plt.ylim(0, 0.5)
 
 
     plt.savefig('outputs/charts/four_corpus_comparison.png')
@@ -188,4 +188,4 @@ if not os.path.isfile('outputs/aggregated data/distribution_differences.txt'):
 article_freq = {'fear': 0.041811846689895474, 'anger': 0.05574912891986063, 'trust': 0.11498257839721254, 'surprise': 0.08710801393728224, 'positive': 0.28222996515679444, 'negative': 0.07317073170731707, 'sadness': 0.041811846689895474, 'disgust': 0.010452961672473868, 'joy': 0.10801393728222997, 'anticipation': 0.18466898954703834}
 transcript_freq = {'fear': 0.03741496598639456, 'anger': 0.047619047619047616, 'trust': 0.12585034013605442, 'surprise': 0.08843537414965986, 'positive': 0.29591836734693877, 'negative': 0.07142857142857142, 'sadness': 0.03741496598639456, 'disgust': 0.01020408163265306, 'joy': 0.10204081632653061, 'anticipation': 0.1836734693877551}
 
-chart_matches(article_freq, transcript_freq)
+# chart_matches(article_freq, transcript_freq)
