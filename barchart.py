@@ -162,12 +162,12 @@ def chart_matches(article_freq, transcript_freq):
 
     # Chart labels
     plt.ylabel('Emotion distribution')
-    plt.title('Emotion distribution between matched article/transcript pair with most similar emotion vectors')
+    plt.title('Emotion distribution between matched article and transcript')
     plt.xticks(x+(width/2), emotions)
     plt.legend(loc='upper left')
     plt.ylim(0, 0.5)
 
-    plt.savefig('outputs/matched articles transcripts/most_similar_match_comparison.png')
+    plt.savefig('outputs/matched articles transcripts/example_comparison.png')
 
 # three_corpora_chart()
 
@@ -185,7 +185,7 @@ if not os.path.isfile('outputs/aggregated data/distribution_differences.txt'):
 
 # four_corpora_chart()
         
-article_freq = {'fear': 0.041811846689895474, 'anger': 0.05574912891986063, 'trust': 0.11498257839721254, 'surprise': 0.08710801393728224, 'positive': 0.28222996515679444, 'negative': 0.07317073170731707, 'sadness': 0.041811846689895474, 'disgust': 0.010452961672473868, 'joy': 0.10801393728222997, 'anticipation': 0.18466898954703834}
-transcript_freq = {'fear': 0.03741496598639456, 'anger': 0.047619047619047616, 'trust': 0.12585034013605442, 'surprise': 0.08843537414965986, 'positive': 0.29591836734693877, 'negative': 0.07142857142857142, 'sadness': 0.03741496598639456, 'disgust': 0.01020408163265306, 'joy': 0.10204081632653061, 'anticipation': 0.1836734693877551}
+article_freq = {'fear': 0.10655737704918032, 'anger': 0.10655737704918032, 'trust': 0.1557377049180328, 'surprise': 0.05737704918032787, 'positive': 0.13934426229508196, 'negative': 0.16393442622950818, 'sadness': 0.08196721311475409, 'disgust': 0.03278688524590164, 'joy': 0.04918032786885246, 'anticipation': 0.10655737704918032}
+transcript_freq = {'fear': 0.05286343612334802, 'anger': 0.06387665198237885, 'trust': 0.11674008810572688, 'surprise': 0.07488986784140969, 'positive': 0.21806167400881057, 'negative': 0.10352422907488987, 'sadness': 0.048458149779735685, 'disgust': 0.024229074889867842, 'joy': 0.1013215859030837, 'anticipation': 0.1960352422907489}
 
-# chart_matches(article_freq, transcript_freq)
+chart_matches(article_freq, transcript_freq)
