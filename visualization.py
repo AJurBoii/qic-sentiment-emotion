@@ -50,8 +50,8 @@ def three_corpora_chart():
     plt.bar(transcript_bars, transcript_frequencies, width=width, label='Transcripts')
     
     # Chart labels
-    plt.ylabel('Emotion frequency')
-    plt.title('Emotion frequencies by corpus')
+    plt.ylabel('Emotion distribution')
+    plt.title('Emotion distribution by corpus')
     plt.xticks(x+width+(width/2), emotions)
     plt.legend(loc='upper left')
     plt.ylim(0, 0.5)
@@ -204,18 +204,18 @@ def emotion_scatter_plot(filename, emotion):
 
     plt.savefig(f'outputs/matched articles transcripts/scatter plots/{emotion}.png')
 
-# three_corpora_chart()
+three_corpora_chart()
 
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'positive')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'negative')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'anticipation')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'joy')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'fear')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'trust')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'sadness')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'disgust')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'surprise')
-emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'anger')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'positive')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'negative')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'anticipation')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'joy')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'fear')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'trust')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'sadness')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'disgust')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'surprise')
+# emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'anger')
 
 
 
