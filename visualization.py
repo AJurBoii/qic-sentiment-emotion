@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+import csv
 import os
 
 emotions = ['positive', 'negative', 'anticipation', 'joy', 'fear', 'trust', 'sadness', 'disgust', 'surprise', 'anger']
@@ -169,7 +170,45 @@ def chart_matches(article_freq, transcript_freq):
 
     plt.savefig('outputs/matched articles transcripts/example_comparison.png')
 
+def emotion_scatter_plot(filename, emotion):
+    # Collect polarities of each match
+    article_vectors = []
+    transcript_vectors = []
+    with open(filename, 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            temp = eval(row['article_frequency'])
+            article_emotion = temp[emotion]
+            article_vectors.append(article_emotion)
+
+            temp = eval(row['transcript_frequency'])
+            transcript_emotion = temp[emotion]
+            transcript_vectors.append(transcript_emotion)
+    # plot!!
+    fig, ax = plt.subplots()
+    ax.scatter(article_vectors, transcript_vectors)
+
+    # labels
+    plt.ylabel(f'\"{emotion}\" in transcript')
+    plt.xlabel(f'\"{emotion}\" in article')
+    plt.title(f'{emotion} vector between article/transcript matches')
+
+    plt.savefig(f'outputs/matched articles transcripts/scatter plots/{emotion}.png')
+
 # three_corpora_chart()
+
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'positive')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'negative')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'anticipation')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'joy')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'fear')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'trust')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'sadness')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'disgust')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'surprise')
+emotion_scatter_plot('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv', 'anger')
+
+
 
 
 
@@ -188,4 +227,4 @@ if not os.path.isfile('outputs/aggregated data/distribution_differences.txt'):
 article_freq = {'fear': 0.10655737704918032, 'anger': 0.10655737704918032, 'trust': 0.1557377049180328, 'surprise': 0.05737704918032787, 'positive': 0.13934426229508196, 'negative': 0.16393442622950818, 'sadness': 0.08196721311475409, 'disgust': 0.03278688524590164, 'joy': 0.04918032786885246, 'anticipation': 0.10655737704918032}
 transcript_freq = {'fear': 0.05286343612334802, 'anger': 0.06387665198237885, 'trust': 0.11674008810572688, 'surprise': 0.07488986784140969, 'positive': 0.21806167400881057, 'negative': 0.10352422907488987, 'sadness': 0.048458149779735685, 'disgust': 0.024229074889867842, 'joy': 0.1013215859030837, 'anticipation': 0.1960352422907489}
 
-chart_matches(article_freq, transcript_freq)
+# chart_matches(article_freq, transcript_freq)
