@@ -1,5 +1,6 @@
 from nrclex import NRCLex
 import matplotlib.pyplot as plt
+from statistics import median
 import numpy as np
 import os
 import sys
@@ -89,7 +90,7 @@ def matched_analysis(text_file):
     output: top_bottom_five_matches.txt, the values of the top and bottom 5 average
     differences
 '''
-def top_bottom_five(file_name):
+def top_bottom(file_name):
     with open(file_name, 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
 
@@ -99,14 +100,14 @@ def top_bottom_five(file_name):
             all_averages.append(float(row['average_difference']))
 
         # sort in both ascending (bottom 5) and descending (top 5) order
-        all_averages.sort()
-        bottom_five = all_averages[:5]
-        all_averages.sort(reverse=True)
-        top_five = all_averages[:5]
+            
+        outfile = open('outputs/matched articles transcripts/top_bottom_matches.txt', 'w')
 
-        outfile = open('outputs/matched articles transcripts/top_bottom_five_matches.txt', 'w')
-        outfile.write(f'Top 5:\n{str(top_five)}\n')
-        outfile.write(f'Bottom 5:\n{bottom_five}')
+        all_averages.sort()
+        outfile.write(f'Ascending:\n{str(all_averages)}\n')
+
+        all_averages.sort(reverse=True)
+        outfile.write(f'Descending:\n{str(all_averages)}')
 
         outfile.close()
 
@@ -121,6 +122,16 @@ def average_matched_difference(filename):
             num_rows += 1
     return sum/num_rows
 
+def mean_difference(filename):
+    differences = []
+    with open(filename, 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            differences.append(float(row['average_difference']))
+    
+    return median(differences)
+        
+
 
 
 ''' Taking in command line arguments:
@@ -130,9 +141,11 @@ def average_matched_difference(filename):
 num_args = len(sys.argv)
 if num_args < 3:
     # matched_analysis('data/raw_matched_art_trans.csv')
-    # top_bottom_five('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')
-    with open('outputs/matched articles transcripts/average_difference.AGGREGATE.txt', 'w') as file:
-        file.write(str(average_matched_difference('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')))
+    top_bottom('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')
+    # with open('outputs/matched articles transcripts/average_difference.AGGREGATE.txt', 'w') as file:
+    #     file.write(str(average_matched_difference('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv')))
+    # print(mean_difference('outputs/matched articles transcripts/MATCHED_art_trans.AFFECT_FREQUENCIES.csv'))
+
 else:
     file_name = sys.argv[1]
     label = sys.argv[2]
