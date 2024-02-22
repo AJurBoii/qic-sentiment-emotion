@@ -184,12 +184,21 @@ def emotion_scatter_plot(filename, emotion):
             temp = eval(row['transcript_frequency'])
             transcript_emotion = temp[emotion]
             transcript_vectors.append(transcript_emotion)
+    x = np.array(article_vectors)
+    y = np.array(transcript_vectors)
+
+    slope, intercept = np.polyfit(x, y, 1)
+
+    line_of_best_fit = slope * x + intercept
     # plot!!
     fig, ax = plt.subplots()
     ax.scatter(article_vectors, transcript_vectors)
+    plt.plot(x, line_of_best_fit, color='red', label='Line of Best Fit')
 
     # labels
     plt.ylabel(f'\"{emotion}\" in transcript')
+    plt.xlim(0, 0.40)
+    plt.ylim(0, 0.40)
     plt.xlabel(f'\"{emotion}\" in article')
     plt.title(f'{emotion} vector between article/transcript matches')
 
